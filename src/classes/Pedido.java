@@ -8,17 +8,17 @@ import java.util.List;
 import classes.enums.Status;
 
 public class Pedido {
-	
+
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	
+
 	private Date momento;
 	private Status status;
 	private Cliente cliente;
-	
+
 	private List<ItemPedido> itens = new ArrayList<>();
-	
+
 	public Pedido() {
-		
+
 	}
 
 	public Pedido(Date momento, Status status, Cliente cliente) {
@@ -54,40 +54,43 @@ public class Pedido {
 	public List<ItemPedido> getItem() {
 		return itens;
 	}
-	
+
 	public void addItem(ItemPedido item) {
 		itens.add(item);
 	}
+
 	public void removeItem(ItemPedido item) {
 		itens.remove(item);
 	}
+
 	public double total() {
 		Double soma = 0.0;
-		for(ItemPedido item : itens) {
+		for (ItemPedido item : itens) {
 			soma += item.subTotal();
 		}
 		return soma;
 	}
+
 	@Override
 	public String toString() {
-		StringBuilder sb = new  StringBuilder();
+		StringBuilder sb = new StringBuilder();
 		sb.append("Data: " + momento + "\n");
 		sb.append("Status: " + status + "\n");
 		sb.append("Cliente: " + cliente.getNome() + "\n");
 		sb.append("Itens:" + "\n");
-		for(ItemPedido item : itens) {
+		for (ItemPedido item : itens) {
 			sb.append(item.getProduto().getNome().toUpperCase() 
-					+ ", R$ "
+					+ ", R$ " 
 					+ String.format("%.2f", item.getPreco())
-					+ ", Quantidade: "
-					+  item.getQuantidade()
-					+ ", Subtutal: R$" 
-					+ String.format("%.2f", item.subTotal())   
+					+ ", Quantidade: " 
+					+ item.getQuantidade() 
+					+ ", Subtutal: R$"
+					+ String.format("%.2f", item.subTotal()) 
 					+ "\n");
 		}
 		sb.append("Preço total: R$" + String.format("%.2f", total()));
-				
+
 		return sb.toString();
 	}
-	
+
 }

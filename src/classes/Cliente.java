@@ -6,9 +6,9 @@ public class Cliente {
 	private String nome;
 	private String email;
 	private Date dtaNasc;
-	
+
 	public Cliente() {
-		
+
 	}
 
 	public Cliente(String nome, String email, Date dtaNasc) {
@@ -40,5 +40,5 @@ public class Cliente {
 	public void setDtaNasc(Date dtaNasc) {
 		this.dtaNasc = dtaNasc;
 	}
-	
+
 }
